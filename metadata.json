@@ -2,14 +2,14 @@
   "name": "finn-confluent",
   "version": "0.1.0",
   "author": "finn.no",
-  "summary": "Module to install and configure Confluent (Kafka, Kafka Stream, Schema Registry, REST proxy)",
+  "summary": "Module to install and configure Confluent (Kafka w/zookeeper, Schema Registry, REST proxy)",
   "license": "BSD",
   "source": "git@gitlab.redpill-linpro.com:krorvik/confluent.git",
-  "project_page": null,
+  "project_page": "https://github.com/krorvik/finn-confluent",
   "issues_url": null,
   "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"},
-    {"name":"puppetlabs-apt"", version_requirement":">= 2.2.2" }
+    {"name": "puppetlabs-stdlib", "version_requirement": ">= 1.0.0" },
+    {"name": "puppetlabs-apt",    "version_requirement": ">= 2.2.2" }
   ],
   "data_provider": null
 }
