@@ -1,0 +1,1 @@
+class confluent::kafka::install { }

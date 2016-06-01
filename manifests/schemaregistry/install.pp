@@ -1,0 +1,1 @@
+class confluent::schemaregistry::install { }
