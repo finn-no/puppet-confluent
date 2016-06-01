@@ -5,7 +5,7 @@ class confluent (
   $schemaregistry = false,
   $restservice    = false,
 ) {
-
+*.swp
   if not ($kafka or $kafkastreams or $zookeeper or $schemaregistry or $restservice) {
     fail('You must choose to install at least one component')
   }
