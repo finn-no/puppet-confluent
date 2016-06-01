@@ -1,4 +1,4 @@
-class confluent::property(
+define confluent::property (
   $propertyfile,
   $component,
   $settingshash,
@@ -8,7 +8,7 @@ class confluent::property(
   ini_setting { "${component}_${name}":
     setting => $name,
     section => $section,
-    value   => $settingshash[${name}}],
+    value   => $settingshash[$name],
     path    => $propertyfile,
   }
 

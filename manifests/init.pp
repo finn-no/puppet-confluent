@@ -6,10 +6,10 @@ class confluent (
   $zookeeper                            = false,
   $schemaregistry                       = false,
   $restservice                          = false,
-  $kafka_server_config_overrides        = {}
-  $zookeeper_config_overrides           = {}
-  $restservice_config_overrides         = {}
-  $schemaregistry_config_overrides      = {}
+  $kafka_server_config_overrides        = {},
+  $zookeeper_config_overrides           = {},
+  $restservice_config_overrides         = {},
+  $schemaregistry_config_overrides      = {},
 ) {
 
   include confluent::defaults

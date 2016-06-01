@@ -7,7 +7,7 @@ class confluent::kafka::config (
 
   $keys = keys($real_server_properties)
 
-  ::confluent::property { $keys:
+  confluent::property { $keys:
     propertyfile => $server_propertyfile,
     component    => 'kafkaserver',
     settingshash => $real_server_properties,
