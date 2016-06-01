@@ -5,7 +5,7 @@ class confluent::zookeeper::service {
     mode   => '0755',
   }
 
-  service { 'zoookeeper':
+  service { 'zookeeper':
     ensure  => running,
     enable  => true,
     require => File['/etc/init.d/zookeeper'],
