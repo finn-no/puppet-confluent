@@ -1,4 +1,5 @@
 class confluent (
+  $confluent_version = '3.0',
   $kafka          = false,
   $kafkastreams   = false,
   $zookeeper      = false,
