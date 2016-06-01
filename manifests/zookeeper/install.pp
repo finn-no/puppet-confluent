@@ -1,1 +1,0 @@
-class confluent::zookeeper::install { }
