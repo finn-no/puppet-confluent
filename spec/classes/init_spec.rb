@@ -2,16 +2,20 @@ require 'spec_helper'
 
 describe 'confluent' do
   context 'with default values for all parameters' do
+
     it do 
       expect { 
-        is_expected.to raise_error(Puppet::Error, /foo/) 
+        is_expected.to raise_error(Puppet::Error)
       }
     end
   end
 
   context 'installing kafka' do
 
-    let(:params) { { :kafka => true }}
+    let(:params) { { 
+      :kafka    => true,
+      :brokerid => 1,
+    }}
 
     it { should contain_class('confluent') }
     it { should contain_class('confluent::kafka') }
