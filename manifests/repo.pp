@@ -1,0 +1,3 @@
+class confluent::repo {
+
+}
