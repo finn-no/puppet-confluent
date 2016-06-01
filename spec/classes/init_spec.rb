@@ -10,10 +10,12 @@ describe 'confluent' do
   end
 
   context 'installing kafka' do
+
     let(:params) { { :kafka => true }}
 
     it { should contain_class('confluent') }
     it { should contain_class('confluent::kafka') }
+    it { should contain_package('confluent-kafka-2.11') }
 
   end
 
