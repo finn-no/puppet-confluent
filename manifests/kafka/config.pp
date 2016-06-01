@@ -2,10 +2,15 @@ class confluent::kafka::config (
 
 ) {
 
-  file { '/etc/kafka/server.properties':
-    ensure  => file,
-    mode    => '0644',
-    content => template('confluent/kafka/server.properties.erb'),
+  $server_propertyfile = '/etc/kafka/server.properties'
+  $real_server_properties = merge($::confluent::defaults::kafka_server_properties, $::confluent::kafka_server_config_overrides)
+
+  $keys = keys($real_server_properties)
+
+  ::confluent::property { $keys:
+    propertyfile => $server_propertyfile,
+    component    => 'kafkaserver',
+    settingshash => $real_server_properties,
   }
 
 }
