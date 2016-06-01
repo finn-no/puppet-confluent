@@ -6,7 +6,7 @@ class confluent (
   $zookeeper      = false,
   $schemaregistry = false,
   $restservice    = false,
-) inherits confluent::params {
+) {
 
   if ! ($kafka or $zookeeper or $schemaregistry or $restservice) {
     fail('You must choose to install at least one component')
