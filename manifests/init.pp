@@ -1,4 +1,3 @@
-#Foo
 class confluent (
   $version        = '3.0',
   $kafka          = false,
