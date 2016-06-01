@@ -12,6 +12,7 @@ describe 'confluent' do
     let(:params) { { :kafka => true }}
 
     it { should contain_class('confluent') }
+    it { should contain_class('confluent::kafka') }
 
   end
 
