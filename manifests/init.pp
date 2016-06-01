@@ -6,13 +6,11 @@ class confluent (
   $zookeeper                            = false,
   $schemaregistry                       = false,
   $restservice                          = false,
-  $kafka_server_config_overrides        = {},
-  $zookeeper_config_overrides           = {},
-  $restservice_config_overrides         = {},
-  $schemaregistry_config_overrides      = {},
+  $kafka_server_properties              = {},
+  $zookeeper_properties                 = {},
+  $restservice_properties               = {},
+  $schemaregistry_properties            = {},
 ) {
-
-  include confluent::defaults
 
   if ! ($kafka or $zookeeper or $schemaregistry or $restservice) {
     fail('You must choose to install at least one component')
