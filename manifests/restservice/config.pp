@@ -1,16 +1,15 @@
 class confluent::restservice::config {
 
-  file { '/etc/kafka/kafka-rest.properties':
-    ensure  => file,
-    mode    => '0644',  
-    content => template('confluent/restservice/kafka-rest.properties.erb')
-  }
+  $restservice_propertyfile = '/etc/kafka/restservice.properties'
 
-  file { '/etc/kafka/kafka-rest-log4j.properties':
-    ensure  => file,
-    mode    => '0644',  
-    content => template('confluent/restservice/kafka-rest-log4j.properties.erb')
-  }
+	$real_restservice_properties = merge($::confluent::defaults::restservice_properties, $::confluent::restservice_config_overrides)
 
+  $keys = keys($real_restservice_properties)
+
+  ::confluent::property { $keys:
+    propertyfile => $restservice_propertyfile,
+    component    => 'restservice',
+    settingshash => $real_restservice_properties,
+  }
 
 }

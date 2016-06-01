@@ -1,9 +1,15 @@
 class confluent::schemaregistry::config {
 
-  file { '/etc/kafka/schemaregistry.properties':
-    ensure  => file, 
-    mode    => '0644',
-    content => template('confluent/schemaregistry/schemaregistry.properties.erb'),
+  $schemaregistry_propertyfile = '/etc/kafka/schemaregistry.properties'
+
+	$real_schemaregistry_properties = merge($::confluent::defaults::schemaregistry_properties, $::confluent::schemaregistry_config_overrides)
+
+  $keys = keys($real_schemaregistry_properties)
+
+  ::confluent::property { $keys:
+    propertyfile => $schemaregistry_propertyfile,
+    component    => 'schemaregistry',
+    settingshash => $real_schemaregistry_properties,
   }
 
 }
