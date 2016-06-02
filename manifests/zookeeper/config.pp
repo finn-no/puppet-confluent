@@ -1,13 +1,8 @@
 class confluent::zookeeper::config {
 
-  $zookeeper_propertyfile = '/etc/kafka/zookeeper.properties'
-
-  $keys = keys(merge({}, $::confluent::zookeeper_properties))
-
-  ::confluent::property { $keys:
-    propertyfile => $zookeeper_propertyfile,
+  ::confluent::propertyfile { '/etc/kafka/zookeeper.properties':
+    propertyhash =>$::confluent::zookeeper_properties,
     component    => 'zookeeper',
-    settingshash => $::confluent::zookeeper_properties,
   }
 
 }

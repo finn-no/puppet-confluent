@@ -1,13 +1,8 @@
 class confluent::schemaregistry::config {
 
-  $schemaregistry_propertyfile = '/etc/schema-registry/schema-registry.properties'
-
-  $keys = keys(merge({}, $::confluent::schemaregistry_properties))
-
-  ::confluent::property { $keys:
-    propertyfile => $schemaregistry_propertyfile,
+  ::confluent::propertyfile { '/etc/schema-registry/schema-registry.properties':
+    propertyhash => $::confluent::schemaregistry_properties,
     component    => 'schemaregistry',
-    settingshash => $::confluent::schemaregistry_properties,
   }
 
 }
