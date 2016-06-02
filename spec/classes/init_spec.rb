@@ -12,9 +12,11 @@ describe 'confluent' do
 
   context 'installing kafka' do
 
+    let(:facts) { { 
+      :osfamily => 'Debian',
+    }}
     let(:params) { { 
       :kafka    => true,
-      :brokerid => 1,
     }}
 
     it { should contain_class('confluent') }
