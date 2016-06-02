@@ -7,4 +7,53 @@ class confluent::kafka::config (
     component    => 'kafka-server',
   }
 
+  ::confluent::propertyfile { '/etc/kafka/connect-console-sink.properties':
+    propertyhash => {},
+    component    => '',
+  }
+
+  ::confluent::propertyfile { '/etc/kafka/connect-console-source.properties':
+    propertyhash => {},
+    component    => '',
+  }
+
+  ::confluent::propertyfile { '':
+    propertyhash => {},
+    component    => '',
+  }
+
+  ::confluent::propertyfile { '':
+    propertyhash => {},
+    component    => '',
+  }
+
+  ::confluent::propertyfile { '':
+    propertyhash => {},
+    component    => '',
+  }
+
+  ::confluent::propertyfile { '':
+    propertyhash => {},
+    component    => '',
+  }
+
+  ::confluent::propertyfile { '':
+    propertyhash => {},
+    component    => '',
+  }
+
+  ::confluent::propertyfile { '':
+    propertyhash => {},
+    component    => '',
+  }
+  ::confluent::propertyfile { '':
+    propertyhash => {},
+    component    => '',
+  }
+  ::confluent::propertyfile { '':
+    propertyhash => {},
+    component    => '',
+  }
+
+
 }
