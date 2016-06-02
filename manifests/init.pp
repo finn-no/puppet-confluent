@@ -5,7 +5,9 @@ class confluent (
   $zookeeper                            = false,
   $schemaregistry                       = false,
   $restservice                          = false,
-  $kafka_server_properties              = {},
+  $kafka_server_properties              = {
+    "broker.id" => '1',
+  },
   $zookeeper_properties                 = {},
   $restservice_properties               = {},
   $schemaregistry_properties            = {},
