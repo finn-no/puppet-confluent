@@ -1,5 +1,4 @@
 class confluent (  
-  $brokerid,
   $version                              = '3.0',
   $scala_version                        = '2.11',
   $kafka                                = false,

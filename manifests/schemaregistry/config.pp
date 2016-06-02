@@ -1,6 +1,6 @@
 class confluent::schemaregistry::config {
 
-  $schemaregistry_propertyfile = '/etc/kafka/schemaregistry.properties'
+  $schemaregistry_propertyfile = '/etc/schema-registry/schema-registry.properties'
 
   $keys = keys(merge({}, $::confluent::schemaregistry_properties))
 
