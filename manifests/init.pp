@@ -5,10 +5,30 @@ class confluent (
   $zookeeper                            = false,
   $schemaregistry                       = false,
   $restservice                          = false,
+
+  #properties for components may be added, packages define defaults. 
   $kafka_server_properties              = {},
+  $kafka_log4j_properties               = {},
+  $connect_console_sink_properties      = {},
+  $connect_console_source_properties    = {},
+  $connect_distributed_properties       = {},
+  $connect_standalone_properties        = {},
+  $connect_file_sink_properties         = {},
+  $connect_file_source_properties       = {},
+  $connect_log4j_properties             = {},
+  $producer_properties                  = {},
+  $consumer_properties                  = {},
+  $tools_log4j_properties               = {},
+  
   $zookeeper_properties                 = {},
+  
   $restservice_properties               = {},
+  $restservice_log4j_properties         = {},
+  
   $schemaregistry_properties            = {},
+  $connect_avro_distributed_properties  = {},
+  $connect_avro_standalone_properties   = {},
+  $schemaregistry_log4j_properties      = {},
 ) {
 
   include confluent::repo
@@ -49,3 +69,4 @@ class confluent (
   }
 
 }
+
