@@ -5,4 +5,10 @@ class confluent::restservice::config {
     component    => 'restservice',
   }
 
+  ::confluent::propertyfile { '/etc/kafka-rest/log4j.properties':
+    propertyhash => $::confluent::restservice_properties,
+    component    => 'restservice',
+  }
+
+
 }
