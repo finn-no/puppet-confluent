@@ -12,6 +12,8 @@ class confluent (
   $schemaregistry_properties            = {},
 ) {
 
+  include confluent::repo
+
   if ! ($kafka or $zookeeper or $schemaregistry or $restservice) {
     fail('You must choose to install at least one component')
   }
@@ -23,7 +25,8 @@ class confluent (
     $packages = [ "confluent-kafka-${::confluent::scala_version}" ]
 
     package { $packages:
-      ensure => installed,
+      ensure  => installed,
+      require => Class['confluent::repo'],
     }
 
     if $kafka {
