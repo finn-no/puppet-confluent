@@ -1,0 +1,56 @@
+#!/bin/sh
+DAEMON_PATH="<%= @daemonpath %>"
+CONFIG_PATH="<%= @configpath %>"
+DAEMON_NAME="<%= @daemonname %>"
+PROPERTY_NAME="<%= @propertyname %>"
+PID_PATTERN="<%= @pidpattern %>"
+
+# Check that networking is up.
+#[ ${NETWORKING} = "no" ] && exit 0
+
+PATH=$PATH:$DAEMON_PATH
+
+# See how we were called.
+case "$1" in
+  start)
+        # Start daemon.
+        echo "Starting $DAEMON_NAME";
+        nohup $DAEMON_PATH/$DAEMON_NAME-start -daemon $CONFIG_PATH/$PROPERTY_NAME
+				exit $?
+        ;;
+  stop)
+        # Stop daemons.
+        echo "Shutting down $DAEMON_NAME";
+        pid=`ps ax | grep -i '$PID_PATTERN' | grep -v grep | awk '{print $1}'`
+        if [ -n "$pid" ]
+          then
+          kill -9 $pid
+					exit $?
+        else
+          echo "$DAEMON_NAME is not running"
+					exit 1
+        fi
+        ;;
+  restart)
+        $0 stop
+        sleep 2
+        $0 start
+				exit $?
+        ;;
+  status)
+        pid=`ps ax | grep -i '$PID_PATTERN' | grep -v grep | awk '{print $1}'`
+        if [ -n "$pid" ]
+          then
+          echo "$DAEMON_NAME is running as PID: $pid"
+					exit 0
+        else
+          echo "$DAEMON_NAME is not running"
+					exit 1
+        fi
+        ;;
+  *)
+        echo "Usage: $0 {start|stop|restart|status}"
+        exit 1
+esac
+
+exit 1
