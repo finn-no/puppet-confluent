@@ -15,6 +15,8 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision "puppet" do |puppet|
     puppet.module_path = '/home/krorvik/code/puppet/modules'
+    puppet.manifests_path = 'tests'
+    puppet.manifest_file = 'standalone.pp'
     puppet.synced_folder_args = [ '--exclude=fixtures', '-a', '--delete'  ]
   end
 

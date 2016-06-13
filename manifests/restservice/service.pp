@@ -6,6 +6,7 @@ class confluent::restservice::service {
   }
 
   service { 'kafka-restservice':
+    noop    => true,
     ensure  => running,
     enable  => true,
     require => File['/etc/init.d/kafka-restservice'],

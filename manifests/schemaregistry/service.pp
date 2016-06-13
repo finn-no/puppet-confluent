@@ -6,6 +6,7 @@ class confluent::schemaregistry::service {
   }
 
   service { 'kafka-schemaregistry':
+    noop    => true,
     ensure  => running,
     enable  => true,
     require => File['/etc/init.d/kafka-schemaregistry'],
