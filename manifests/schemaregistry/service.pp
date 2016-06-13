@@ -1,12 +1,18 @@
-class confluent::schemaregistry::service {
+class confluent::schemaregistry::service (
+  $daemonpath = '/usr/bin',
+  $configpath = '/etc/schema-registry',
+  $daemonname = 'schema-registry',
+  $propertyname = 'schema-registry.properties',
+  $pidpattern = 'kafka.Kafka',
+ ) {
 
   file { '/etc/init.d/kafka-schemaregistry':
-    ensure => file,
-    mode   => '0755',
+    ensure  => file,
+    mode    => '0755',
+    content => template('confluent/init.erb'),
   }
 
   service { 'kafka-schemaregistry':
-    noop    => true,
     ensure  => running,
     enable  => true,
     require => File['/etc/init.d/kafka-schemaregistry'],
