@@ -45,7 +45,7 @@ class confluent (
 
     package { $packages:
       ensure  => installed,
-      require => Class['confluent::repo'],
+      require => Exec['repo update'],
     }
 
     if $kafka {
