@@ -1,7 +1,7 @@
 class confluent::zookeeper::service (
   $daemonpath = '/usr/bin',
   $configpath = '/etc/kafka',
-  $daemonname = 'zookeeper',
+  $daemonname = 'zookeeper-server',
   $propertyname = 'zookeeper.properties',
   $pidpattern = 'zookeeper',
 ) { 
@@ -9,7 +9,7 @@ class confluent::zookeeper::service (
   file { '/etc/init.d/zookeeper':
     ensure  => file,
     mode    => '0755',
-    content => template('confluent/zookeeper/init.erb'),
+    content => template('confluent/init.erb'),
   }
 
   service { 'zookeeper':
