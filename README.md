@@ -2,8 +2,12 @@
 
 ## OS Support
 
+Tested on:
+
 * Debian Wheezy
 * Debian Jessie
+
+Will not run on osfamily RedHat. 
 
 ## Description
 
@@ -100,11 +104,6 @@ class { 'confluent':
 }
 ````
 
-
 ## References
 
 * http://www.confluent.io/
-
-## Limitations
-
-Code is written for Debian, tested on debian. Provisions are in place for expansion, but no effort is made to run on RedHat-style. In fact, as it stands, it won't.
