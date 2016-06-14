@@ -1,4 +1,4 @@
-class confluent::kafka::service (
+class confluent::kafka_server::service (
   $daemonpath = '/usr/bin',
   $configpath = '/etc/kafka',
   $daemonname = 'kafka-server',

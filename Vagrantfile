@@ -6,7 +6,7 @@ wget -q http://apt.puppetlabs.com/puppetlabs-release-wheezy.deb
 dpkg -i puppetlabs-release-wheezy.deb
 apt-get update
 apt-get install --yes puppet htop vim
-gpg --keyserver pgp.mit.edu --recv-keys 670540C841468433 &> /dev/null
+sudo gpg --keyserver pgp.mit.edu --recv-keys 670540C841468433 &> /dev/null
 locale-gen nb_NO.UTF-8
 echo "syntax on" > /root/.vimrc
 EOF

@@ -33,13 +33,13 @@ class confluent (
 
   include confluent::repo
 
-  if ! ($kafka or $zookeeper or $schema_registry or $kafka_rest) {
+  if ! ($kafka_server or $zookeeper or $schema_registry or $kafka_rest) {
     fail('You must choose to install at least one component')
   }
 
   # Kafka and zookeeper are in same package
 
-  if ($kafka or $zookeeper) {
+  if ($kafka_server or $zookeeper) {
 
     $packages = [ "confluent-kafka-${::confluent::scala_version}" ]
 
@@ -48,7 +48,7 @@ class confluent (
       require => Exec['repo update'],
     }
 
-    if $kafka { include ::confluent::kafka }
+    if $kafka_server { include ::confluent::kafka_server }
     if $zookeeper { include ::confluent::zookeeper }
 
   }

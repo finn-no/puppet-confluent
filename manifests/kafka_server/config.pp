@@ -1,4 +1,4 @@
-class confluent::kafka::config (
+class confluent::kafka_server::config (
 
 ) {
 
