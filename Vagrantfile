@@ -12,7 +12,7 @@ echo "syntax on" > /root/.vimrc
 EOF
 
 Vagrant.configure(2) do |config|
-  config.vm.box = "debian/wheezy64"
+  config.vm.box = "debian/jessie64"
   config.vm.provision "shell", inline: $installpuppet
 
   config.vm.provision "puppet" do |p|

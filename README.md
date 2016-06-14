@@ -1,5 +1,10 @@
 # confluent
 
+## OS Support
+
+* Debian Wheezy
+* Debian Jessie
+
 ## Description
 
 finn-confluent is a puppet module to install, configure and run confluent.io distribution of kafka, zookeeper, schema-registry and rest service, on same or separate nodes in clusters. 
