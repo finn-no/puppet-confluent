@@ -64,7 +64,6 @@ class { 'confluent':
   producer_properties                  => {},
   consumer_properties                  => {},
   tools_log4j_properties               => {},
-
 }
 ````
 ### Zookeeper
@@ -84,7 +83,6 @@ class { 'confluent':
   connect_avro_distributed_properties  => {},
   connect_avro_standalone_properties   => {},
   schemaregistry_log4j_properties      => {},
-
 }
 ````
 
@@ -94,7 +92,6 @@ class { 'confluent':
   restservice                    => true,
   restservice_properties         => {},
   restservice_log4j_properties   => {},
-
 }
 ````
 
