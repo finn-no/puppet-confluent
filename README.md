@@ -49,23 +49,21 @@ To configure components, you can pass in hashes with properties for relevant com
 
 ### kafka server
 
-For the kafka server, these hashes are available
-
 ````
 class { 'confluent':
-  kafka          => true,
-  $kafka_server_properties              = {},
-  $kafka_log4j_properties               = {},
-  $connect_console_sink_properties      = {},
-  $connect_console_source_properties    = {},
-  $connect_distributed_properties       = {},
-  $connect_standalone_properties        = {},
-  $connect_file_sink_properties         = {},
-  $connect_file_source_properties       = {},
-  $connect_log4j_properties             = {},
-  $producer_properties                  = {},
-  $consumer_properties                  = {},
-  $tools_log4j_properties               = {},
+  kafka                                => true,
+  kafka_server_properties              => {},
+  kafka_log4j_properties               => {},
+  connect_console_sink_properties      => {},
+  connect_console_source_properties    => {},
+  connect_distributed_properties       => {},
+  connect_standalone_properties        => {},
+  connect_file_sink_properties         => {},
+  connect_file_source_properties       => {},
+  connect_log4j_properties             => {},
+  producer_properties                  => {},
+  consumer_properties                  => {},
+  tools_log4j_properties               => {},
 
 }
 ````
@@ -73,32 +71,30 @@ class { 'confluent':
 
 ````
 class { 'confluent':
-  kafka          => true,
+  zookeeper              => true,
+  zookeeper_properties   => {},
 }
 ````
-
-
 
 ### Schema-registry
 ````
-package { 'openjdk-7-jre':
-  ensure => present,
-} ->
-
 class { 'confluent':
-  kafka          => true,
+  schemaregistry                       => true,
+  schemaregistry_properties            => {},
+  connect_avro_distributed_properties  => {},
+  connect_avro_standalone_properties   => {},
+  schemaregistry_log4j_properties      => {},
+
 }
 ````
 
-
 ### Kafka-rest
 ````
-package { 'openjdk-7-jre':
-  ensure => present,
-} ->
-
 class { 'confluent':
-  kafka          => true,
+  restservice                    => true,
+  restservice_properties         => {},
+  restservice_log4j_properties   => {},
+
 }
 ````
 
