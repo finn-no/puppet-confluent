@@ -27,10 +27,10 @@ package { 'openjdk-7-jre':
 } ->
 
 class { 'confluent':
-  kafka          => true,
-  zookeeper      => true,
-  restservice    => true,
-  schemaregistry => true,
+  kafka_server    => true,
+  zookeeper       => true,
+  kafka_rest      => true,
+  schema_registry => true,
 }
 ````
 
@@ -42,7 +42,7 @@ package { 'openjdk-7-jre':
 } ->
 
 class { 'confluent':
-  kafka          => true,
+  kafka_server => true,
 }
 ````
 
@@ -56,7 +56,7 @@ To configure components, you can pass in hashes with properties for relevant com
 
 ````
 class { 'confluent':
-  kafka                                => true,
+  kafka_server                         => true,
   kafka_server_properties              => {},
   kafka_log4j_properties               => {},
   connect_console_sink_properties      => {},
@@ -83,20 +83,20 @@ class { 'confluent':
 ### Schema-registry
 ````
 class { 'confluent':
-  schemaregistry                       => true,
-  schemaregistry_properties            => {},
-  connect_avro_distributed_properties  => {},
-  connect_avro_standalone_properties   => {},
-  schemaregistry_log4j_properties      => {},
+  schema_registry                       => true,
+  schema_registry_properties            => {},
+  connect_avro_distributed_properties   => {},
+  connect_avro_standalone_properties    => {},
+  schema_registry_log4j_properties      => {},
 }
 ````
 
 ### Kafka-rest
 ````
 class { 'confluent':
-  restservice                    => true,
-  restservice_properties         => {},
-  restservice_log4j_properties   => {},
+  kafka_rest                    => true,
+  kafka_rest_properties         => {},
+  kafka_rest_log4j_properties   => {},
 }
 ````
 

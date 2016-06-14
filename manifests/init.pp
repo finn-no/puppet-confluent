@@ -1,10 +1,10 @@
-class confluent (  
+class confluent (
   $version                              = '3.0',
   $scala_version                        = '2.11',
-  $kafka                                = false,
+  $kafka_server                         = false,
   $zookeeper                            = false,
-  $schemaregistry                       = false,
-  $restservice                          = false,
+  $schema_registry                      = false,
+  $kafka_rest                           = false,
 
   #properties for components may be added, packages define defaults. 
   $kafka_server_properties              = {},
@@ -22,18 +22,18 @@ class confluent (
   
   $zookeeper_properties                 = {},
   
-  $restservice_properties               = {},
-  $restservice_log4j_properties         = {},
+  $kafka_rest_properties                = {},
+  $kafka_rest_log4j_properties          = {},
   
-  $schemaregistry_properties            = {},
+  $schema_registry_properties           = {},
   $connect_avro_distributed_properties  = {},
   $connect_avro_standalone_properties   = {},
-  $schemaregistry_log4j_properties      = {},
+  $schema_registry_log4j_properties     = {},
 ) {
 
   include confluent::repo
 
-  if ! ($kafka or $zookeeper or $schemaregistry or $restservice) {
+  if ! ($kafka or $zookeeper or $schema_registry or $kafka_rest) {
     fail('You must choose to install at least one component')
   }
 
@@ -54,8 +54,8 @@ class confluent (
   }
 
   #Separate components
-  if $schemaregistry { include ::confluent::schemaregistry }
-  if $restservice { include ::confluent::restservice }
+  if $schema_registry { include ::confluent::schema_registry }
+  if $kafka_rest { include ::confluent::kafka_rest }
 
 }
 
