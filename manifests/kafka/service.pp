@@ -3,7 +3,7 @@ class confluent::kafka::service (
   $configpath = '/etc/kafka',
   $daemonname = 'kafka-server',
   $propertyname = 'server.properties',
-  $pidpattern = 'kafka.Kafka',
+  $pidpattern = 'kafkaServer',
 ) {
 
   file { '/etc/init.d/kafka-server':
