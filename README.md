@@ -41,8 +41,7 @@ class { 'confluent':
 
 ## Reference
 
-- http://www.confluent.io/
-- 
+* http://www.confluent.io/
 
 ## Limitations
 
