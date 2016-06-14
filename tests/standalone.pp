@@ -3,8 +3,8 @@ package { 'openjdk-7-jre':
 } ->
 
 class { 'confluent':
-  kafka          => true,
-  zookeeper      => true,
-  restservice    => true,
-  schemaregistry => true,
+  kafka_server    => true,
+  zookeeper       => true,
+  kafka_rest      => true,
+  schema_registry => true,
 }

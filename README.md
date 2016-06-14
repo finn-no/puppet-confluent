@@ -85,9 +85,9 @@ class { 'confluent':
 class { 'confluent':
   schema_registry                       => true,
   schema_registry_properties            => {},
+  schema_registry_log4j_properties      => {},
   connect_avro_distributed_properties   => {},
   connect_avro_standalone_properties    => {},
-  schema_registry_log4j_properties      => {},
 }
 ````
 
