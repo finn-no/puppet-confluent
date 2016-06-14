@@ -3,7 +3,7 @@ class confluent::schemaregistry::service (
   $configpath = '/etc/schema-registry',
   $daemonname = 'schema-registry',
   $propertyname = 'schema-registry.properties',
-  $pidpattern = 'kafka.Kafka',
+  $pidpattern = '[s]chema-registry',
  ) {
 
   file { '/etc/init.d/kafka-schemaregistry':

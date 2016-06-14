@@ -3,7 +3,7 @@ class confluent::zookeeper::service (
   $configpath = '/etc/kafka',
   $daemonname = 'zookeeper-server',
   $propertyname = 'zookeeper.properties',
-  $pidpattern = 'zookeeper.server',
+  $pidpattern = '[z]ookeeper.server',
 ) { 
 
   file { '/etc/init.d/zookeeper':

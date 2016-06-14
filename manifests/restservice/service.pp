@@ -3,7 +3,7 @@ class confluent::restservice::service (
   $configpath = '/etc/kafka-rest',
   $daemonname = 'kafka-rest',
   $propertyname = 'kafka-rest.properties',
-  $pidpattern = 'kafka-rest',
+  $pidpattern = '[k]afka-rest',
 ){
 
   file { '/etc/init.d/kafka-restservice':
