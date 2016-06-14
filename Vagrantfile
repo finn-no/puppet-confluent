@@ -19,7 +19,7 @@ Vagrant.configure(2) do |config|
     p.module_path = '~/code/puppet/modules'
     p.manifests_path = 'tests'
     p.manifest_file = 'standalone.pp'
-    p.synced_folder_args = [ '--exclude="/spec/fixtures"', '-a', '--delete'  ]
+    p.synced_folder_args = [ '--exclude=spec/fixtures' ]
   end
 
   config.vm.provider :libvirt do |lv|
