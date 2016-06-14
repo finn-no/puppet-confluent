@@ -48,25 +48,14 @@ class confluent (
       require => Exec['repo update'],
     }
 
-    if $kafka {
-      include ::confluent::kafka
-    }
-
-    if $zookeeper {
-      include ::confluent::zookeeper
-    }
+    if $kafka { include ::confluent::kafka }
+    if $zookeeper { include ::confluent::zookeeper }
 
   }
 
   #Separate components
-
-  if $schemaregistry {
-    include ::confluent::schemaregistry
-  }
-
-  if $restservice {
-    include ::confluent::restservice
-  }
+  if $schemaregistry { include ::confluent::schemaregistry }
+  if $restservice { include ::confluent::restservice }
 
 }
 
