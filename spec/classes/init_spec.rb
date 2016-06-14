@@ -10,17 +10,17 @@ describe 'confluent' do
     end
   end
 
-  context 'installing kafka' do
+  context 'installing kafka_server' do
 
     let(:facts) { { 
       :osfamily => 'Debian',
     }}
     let(:params) { { 
-      :kafka    => true,
+      :kafka_server    => true,
     }}
 
     it { should contain_class('confluent') }
-    it { should contain_class('confluent::kafka') }
+    it { should contain_class('confluent::kafka_server') }
     it { should contain_package('confluent-kafka-2.11') }
 
   end

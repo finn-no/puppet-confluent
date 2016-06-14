@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe 'confluent::schemaregistry' do
+describe 'confluent::schema_registry' do
 
   context 'with default values do' do
 
-    it { should contain_class('confluent::schemaregistry') }
+    it { should contain_class('confluent::schema_registry') }
 
   end
 

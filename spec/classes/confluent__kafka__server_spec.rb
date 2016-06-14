@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe 'confluent::kafka' do
+describe 'confluent::kafka_server' do
 
   context 'with default values do' do
 
     let (:facts) {{ :osfamily => "Debian" }}
 
-    it { should contain_class('confluent::kafka') }
+    it { should contain_class('confluent::kafka_server') }
 
   end
 
