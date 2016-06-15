@@ -10,6 +10,7 @@ class confluent::kafka_server::service (
     ensure  => file,
     mode    => '0755',    
     content => template('confluent/init.erb'),
+    require => Package[ "confluent-kafka-${::confluent::scala_version}" ],
   }
 
   service { 'kafka-server':

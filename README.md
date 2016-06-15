@@ -6,6 +6,7 @@ Tested on:
 
 * Debian Wheezy
 * Debian Jessie
+* Ubuntu 14.04 LTS
 
 Will not run on osfamily RedHat. 
 
