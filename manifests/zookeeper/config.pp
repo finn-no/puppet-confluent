@@ -4,7 +4,8 @@ class confluent::zookeeper::config {
     file { "$::confluent::zookeeper_datadir/myid":
       ensure  => file,
       content => $::conflient::zookeeper_myid,
-      mode    => '0644',      
+      mode    => '0644',
+    }
   }
 
   ::confluent::propertyfile { '/etc/kafka/zookeeper.properties':
