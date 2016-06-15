@@ -1,6 +1,6 @@
 class confluent::zookeeper::config {
 
-  if $::conflient::zookeeper_myid {
+  if $::confluent::zookeeper_myid {
     file { "$::confluent::zookeeper_datadir/myid":
       ensure  => file,
       content => $::conflient::zookeeper_myid,
