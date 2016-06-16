@@ -6,7 +6,7 @@ class confluent::repo::yum {
     mode    => '0644',
   } ->
 
-  exec { 'Clean yum':
+  exec { 'repo update':
     user    => 'root',
     path    => '/usr/bin:/bin:/usr/sbin:/sbin',
     command => 'yum clean all',

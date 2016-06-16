@@ -9,7 +9,7 @@ locale-gen nb_NO.UTF-8
 EOF
 
 $setupcentos = <<EOF
-yum install puppet git vim
+yum -y install puppet git vim
 EOF
 
 $setupwheezy = <<EOF
