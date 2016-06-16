@@ -1,4 +1,15 @@
 #!/bin/bash
+
+### BEGIN INIT INFO
+# Provides:          <%= @daemonname %>
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start <%= @daemonname %> at boot time
+# Description:       Enable <%= @daemnoname %>
+### END INIT INFO
+
 DAEMON_PATH="<%= @daemonpath %>"
 CONFIG_PATH="<%= @configpath %>"
 DAEMON_NAME="<%= @daemonname %>"

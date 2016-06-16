@@ -16,6 +16,7 @@ class confluent::kafka_rest::service (
     ensure  => running,
     enable  => true,
     require => File['/etc/init.d/kafka-rest'],
+    provider => 'init',
   }
 
 }

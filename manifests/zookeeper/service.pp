@@ -14,9 +14,10 @@ class confluent::zookeeper::service (
   }
 
   service { 'zookeeper':
-    ensure  => running,
-    enable  => true,
-    require => File['/etc/init.d/zookeeper'],
+    ensure   => running,
+    enable   => true,
+    require  => File['/etc/init.d/zookeeper'],
+    provider => 'init',
   }
 
 }
