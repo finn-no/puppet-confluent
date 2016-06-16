@@ -21,6 +21,7 @@ class confluent (
   $tools_log4j_properties               = {},
   
   $zookeeper_properties                 = {},
+  $zookeeper_myid                       = undef,
   
   $kafka_rest_properties                = {},
   $kafka_rest_log4j_properties          = {},
@@ -30,6 +31,9 @@ class confluent (
   $connect_avro_standalone_properties   = {},
   $schema_registry_log4j_properties     = {},
 ) {
+
+  #Not exepected to change
+  $zookeeper_datadir = '/var/lib/zookeeper'
 
   include confluent::repo
 

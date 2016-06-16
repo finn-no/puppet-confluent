@@ -6,6 +6,7 @@ Tested on:
 
 * Debian Wheezy
 * Debian Jessie
+* Ubuntu 14.04 LTS
 
 Will not run on osfamily RedHat. 
 
@@ -61,7 +62,7 @@ To configure components, you can pass in hashes with properties for relevant com
 ````
 class { 'confluent':
   kafka_server                         => true,
-  kafka_server_properties              => {},
+  kafka_server_properties              => {}, #main props for kafka server, pass in puppet key => value pairs 
   kafka_log4j_properties               => {},
   connect_console_sink_properties      => {},
   connect_console_source_properties    => {},
@@ -80,6 +81,7 @@ class { 'confluent':
 ````
 class { 'confluent':
   zookeeper              => true,
+  zookeeper_myid         => '1',  #Will create a myid file telling zookeeper who she is
   zookeeper_properties   => {},
 }
 ````
