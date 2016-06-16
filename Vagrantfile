@@ -27,11 +27,6 @@ wget -q http://apt.puppetlabs.com/puppetlabs-release-trusty.deb
 dpkg -i puppetlabs-release-trusty.deb
 EOF
 
-$setupxenial = <<EOF
-wget -q http://apt.puppetlabs.com/puppetlabs-release-jessie.deb
-dpkg -i puppetlabs-release-jessie.deb
-EOF
-
 $setupcentos6 = <<EOF
 rpm -Uvh http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
 EOF
@@ -74,9 +69,8 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.define "xenial" do |xenial| 
-    xenial.vm.box = "ubuntu/xenial64"
+    xenial.vm.box = "gbarbieru/xenial"
     xenial.vm.synced_folder ".", "/puppet/confluent", type: "rsync", rsync__exclude: "spec/fixtures"
-    xenial.vm.provision "shell", inline: $setupxenial
     xenial.vm.provision "shell", inline: $setupdebian
     xenial.vm.provision "shell", inline: $puppet
   end
