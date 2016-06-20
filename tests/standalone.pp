@@ -1,8 +1,8 @@
 case $osfamily {
   'Debian': {
     case $lsbdistcodename {
-      'xenial':                     { $pname = 'openjdk-8-jre' }
-      'trusty', 'jessie', 'wheezy': { $pname = 'openjdk-7-jre' }
+      'xenial':                     { $pname = 'openjdk-8-jdk' }
+      'trusty', 'jessie', 'wheezy': { $pname = 'openjdk-7-jdk' }
     }
   }
   'RedHat': {
@@ -18,11 +18,12 @@ package { $pname:
 } ->
 
 class { 'confluent':
-  #kafka_server                  => true,
-  zookeeper                     => true,
-  #kafka_rest                    => true,
-  #schema_registry               => true,
-  zookeeper_java_opts           => "-Dcom.sun.management.jmxremote.port=33333",
+  #kafka_server       => true,
+  zookeeper           => true,
+  #kafka_rest         => true,
+  #schema_registry    => true,
+  zookeeper_opts      => "-Dcom.sun.management.jmxremote.port=33333",
+  zookeeper_heap_opts => "-Xmx756M -Xms756M", 
   zookeeper_properties          => {
     'autopurge.snapRetainCount' => '24',
   }
