@@ -1,9 +1,11 @@
 class confluent::kafka_server::service (
-  $daemonpath = '/usr/bin',
-  $configpath = '/etc/kafka',
-  $daemonname = 'kafka-server',
-  $propertyname = 'server.properties',
-  $pidpattern = '[k]afkaServer',
+  $daemonpath       = '/usr/bin',
+  $configpath       = '/etc/kafka',
+  $daemonname       = 'kafka-server',
+  $propertyname     = 'server.properties',
+  $pidpattern       = '[k]afkaServer',
+  $kafka_opts       = $confluent::kafka_opts,
+  $kafka_heap_opts  = $confluent::kafka_heap_opts,
 ) {
 
   file { '/etc/init.d/kafka-server':

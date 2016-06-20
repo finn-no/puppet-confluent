@@ -1,9 +1,11 @@
 class confluent::zookeeper::service (
-  $daemonpath = '/usr/bin',
-  $configpath = '/etc/kafka',
-  $daemonname = 'zookeeper-server',
+  $daemonpath   = '/usr/bin',
+  $configpath   = '/etc/kafka',
+  $daemonname   = 'zookeeper-server',
   $propertyname = 'zookeeper.properties',
-  $pidpattern = '[z]ookeeper.server',
+  $pidpattern   = '[z]ookeeper.server',
+  $kafka_opts       = $confluent::kafka_opts,
+  $kafka_heap_opts  = $confluent::kafka_heap_opts,
 ) { 
 
   file { '/etc/init.d/zookeeper':

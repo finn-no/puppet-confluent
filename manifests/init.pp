@@ -7,6 +7,8 @@ class confluent (
   $kafka_rest                           = false,
 
   #properties for components may be added, packages define defaults. 
+  $kafka_opts                           = '', #For instance, JVM options, excluding JVM opts
+  $kafka_heap_opts                      = undef,
   $kafka_server_properties              = {},
   $kafka_log4j_properties               = {},
   $connect_console_sink_properties      = {},
@@ -22,6 +24,7 @@ class confluent (
   
   $zookeeper_properties                 = {},
   $zookeeper_myid                       = undef,
+  $zookeeper_java_opts                  = '',
   
   $kafka_rest_properties                = {},
   $kafka_rest_log4j_properties          = {},

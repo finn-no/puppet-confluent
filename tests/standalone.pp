@@ -18,8 +18,12 @@ package { $pname:
 } ->
 
 class { 'confluent':
-  kafka_server    => true,
-  zookeeper       => true,
-  kafka_rest      => true,
-  schema_registry => true,
+  #kafka_server                  => true,
+  zookeeper                     => true,
+  #kafka_rest                    => true,
+  #schema_registry               => true,
+  zookeeper_java_opts           => "-Dcom.sun.management.jmxremote.port=33333",
+  zookeeper_properties          => {
+    'autopurge.snapRetainCount' => '24',
+  }
 }
