@@ -15,11 +15,8 @@ CONFIG_PATH="<%= @configpath %>"
 DAEMON_NAME="<%= @daemonname %>"
 PROPERTY_NAME="<%= @propertyname %>"
 PID_PATTERN="<%= @pidpattern %>"
-KAFKA_OPTS="<%= @kafka_opts %>"
-<% if @heap_opts %>
-export KAFKA_HEAP_OPTS=<%= @heap_opts %>
-<% end %>
-export KAFKA_OPTS=$KAFKA_OPTS
+export KAFKA_HEAP_OPTS="<%= @heap_opts %>"
+export KAFKA_OPTS="<%= @kafka_opts %>"
 
 PATH=$PATH:$DAEMON_PATH
 
