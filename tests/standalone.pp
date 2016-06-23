@@ -14,6 +14,7 @@ case $osfamily {
 }
 
 $kafka_server_properties = {
+  'port'                                 => '7794',
   'broker.id'                            => '1',
   'num.network.threads'                  => '8',
   'socket.receive.buffer.bytes'          => '1048576',
@@ -33,9 +34,12 @@ $kafka_server_properties = {
   'controlled.shutdown.max.retries'      => '3',
   'controlled.shutdown.retry.backoff.ms' => '5000',
   'zookeeper.connection.timeout.ms'      => '1000000',
+  'zookeeper.connect'                    => 'localhost:7793',
 }
 
 $zookeeper_properties = { 
+  'server.1'                  => 'localhost:7795:7796',
+  'clientPort'                => '7793',
 	'tickTime'                  => '2000',
 	'initLimit'                 => '5',
 	'syncLimit'                 => '2',
