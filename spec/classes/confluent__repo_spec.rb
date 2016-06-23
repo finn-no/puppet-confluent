@@ -4,6 +4,7 @@ describe 'confluent::repo' do
 
   context 'for debian' do
 
+    let(:parser) { 'future' }
     let (:facts) {{
       'osfamily' => 'Debian',
     }}
@@ -15,6 +16,7 @@ describe 'confluent::repo' do
 
   context 'for redhat' do
 
+    let(:parser) { 'future' }
     let (:facts) {{
       'osfamily' => 'RedHat',
     }}

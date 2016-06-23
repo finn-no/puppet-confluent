@@ -4,6 +4,7 @@ describe 'confluent::schema_registry::config' do
 
   context 'with default values do' do
 
+    let(:parser) { 'future' }
     it { should contain_class('confluent::schema_registry::config') }
     it { should contain_confluent__propertyfile('/etc/schema-registry/schema-registry.properties') }
     it { should contain_confluent__propertyfile('/etc/schema-registry/log4j.properties') }

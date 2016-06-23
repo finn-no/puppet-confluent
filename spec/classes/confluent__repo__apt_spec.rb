@@ -3,6 +3,7 @@ require 'spec_helper'
 describe 'confluent::repo::apt' do
   context 'with default values for all parameters' do
 
+    let(:parser) { 'future' }
     let(:facts) { { 
       :osfamily => 'Debian',
     }}

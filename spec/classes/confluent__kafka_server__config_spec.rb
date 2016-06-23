@@ -4,6 +4,7 @@ describe 'confluent::kafka_server::config' do
 
   context 'with default values do' do
 
+    let(:parser) { 'future' }
     it { should contain_class('confluent::kafka_server::config') }
     it { should contain_confluent__propertyfile('/etc/kafka/server.properties') }
     it { should contain_confluent__propertyfile('/etc/kafka/log4j.properties') }

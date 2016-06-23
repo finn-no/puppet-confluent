@@ -12,6 +12,8 @@ describe 'confluent' do
 
   context 'installing kafka_server' do
 
+    let(:parser) { 'future' }
+
     let(:facts) { { 
       :osfamily => 'Debian',
     }}
