@@ -1,12 +1,15 @@
 class confluent (
+  #Major version selection, refer to confluent.io docs:
   $version                              = '3.0',
   $scala_version                        = '2.11',
+
+  #components to include
   $kafka_server                         = false,
   $zookeeper                            = false,
   $schema_registry                      = false,
   $kafka_rest                           = false,
 
-  #properties for components may be added, packages define defaults. 
+  #specific tuning, JVM/JMX and propertyfiles in particular
   $kafka_server_opts                    = '', #For instance, JVM options, excluding JVM opts
   $kafka_heap_opts                      = '',
   $kafka_server_properties              = {},
@@ -45,7 +48,8 @@ class confluent (
     fail('You must choose to install at least one component')
   }
 
-  # Kafka and zookeeper are in same package
+  # Kafka and zookeeper are in same package, so must be handled here, 
+  # then include componentspecific setups:
 
   if ($kafka_server or $zookeeper) {
 
