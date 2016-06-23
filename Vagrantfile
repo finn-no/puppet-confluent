@@ -92,7 +92,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.provider :libvirt do |lv|
-    lv.memory = 1024
+    lv.memory = 1536
   end
 
 end

@@ -7,7 +7,7 @@ class confluent (
   $kafka_rest                           = false,
 
   #properties for components may be added, packages define defaults. 
-  $kafka_opts                           = '', #For instance, JVM options, excluding JVM opts
+  $kafka_server_opts                    = '', #For instance, JVM options, excluding JVM opts
   $kafka_heap_opts                      = '',
   $kafka_server_properties              = {},
   $kafka_log4j_properties               = {},
@@ -66,4 +66,3 @@ class confluent (
   if $kafka_rest { include ::confluent::kafka_rest }
 
 }
-

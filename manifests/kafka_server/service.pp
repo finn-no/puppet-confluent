@@ -4,7 +4,7 @@ class confluent::kafka_server::service (
   $daemonname       = 'kafka-server',
   $propertyname     = 'server.properties',
   $pidpattern       = '[k]afkaServer',
-  $kafka_opts       = $confluent::kafka_opts,
+  $kafka_opts       = $confluent::kafka_server_opts,
   $heap_opts        = $confluent::kafka_heap_opts,
 ) {
 
