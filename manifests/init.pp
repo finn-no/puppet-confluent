@@ -11,7 +11,7 @@ class confluent (
 
   #specific tuning, JVM/JMX and propertyfiles in particular
   $kafka_server_opts                    = '', #For instance, JVM options, excluding JVM opts
-  $kafka_heap_opts                      = '',
+  $kafka_server_heap_opts               = '',
   $kafka_server_properties              = {},
   $kafka_log4j_properties               = {},
   $connect_console_sink_properties      = {},
