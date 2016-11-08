@@ -1,7 +1,7 @@
 class confluent::repo::apt {
 
   apt::key { 'confluent':
-    id      => '670540C841468433',
+    id      => '1A77041E0314E6C5A486524E670540C841468433',
     #server => 'pgp.mit.edu',
     content  => template('confluent/repo/archive.key.erb'),
   } ->
