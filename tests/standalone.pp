@@ -59,7 +59,7 @@ class { 'confluent':
   kafka_server             => true,
   kafka_server_properties  => $kafka_server_properties,
   kafka_server_opts        => $kafka_server_jmx_opts,
-  kafka_heap_opts          => "-Xmx1024M -Xms1024M", 
+  kafka_server_heap_opts   => "-Xmx1024M -Xms1024M", 
   zookeeper                => true,
   zookeeper_opts           => $zookeeper_jmx_opts,
   zookeeper_heap_opts      => "-Xmx1024M -Xms1024M", 
