@@ -1,6 +1,6 @@
 {
   "name": "finn-confluent",
-  "version": "0.5",
+  "version": "0.6",
   "author": "finn.no",
   "summary": "Module to install and configure Confluent (Kafka w/zookeeper, Schema Registry, REST proxy)",
   "license": "BSD",
