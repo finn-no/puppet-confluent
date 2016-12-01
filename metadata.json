@@ -3,7 +3,7 @@
   "version": "0.10.1",
   "author": "finn.no",
   "summary": "Module to install and configure Confluent (Kafka w/zookeeper, Schema Registry, REST proxy)",
-  "license": "BSD",
+  "license": "BSD-3-Clause",
   "source": "https://github.com/finn-no/puppet-confluent",
   "project_page": "https://github.com/finn-no/puppet-confluent",
   "issues_url": "https://github.com/finn-no/puppet-confluent/issues",
