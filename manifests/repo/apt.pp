@@ -1,9 +1,9 @@
 class confluent::repo::apt {
 
   apt::key { 'confluent':
-    id      => '1A77041E0314E6C5A486524E670540C841468433',
+    key        => '1A77041E0314E6C5A486524E670540C841468433',
     #server => 'pgp.mit.edu',
-    content  => template('confluent/repo/archive.key.erb'),
+    #content  => template('confluent/repo/archive.key.erb'),
   } ->
 
   file { '/etc/apt/sources.list.d/confluent.list':
@@ -16,7 +16,7 @@ class confluent::repo::apt {
   exec { 'repo update':
     path        => '/usr/sbin:/usr/bin:/sbin:/bin',
     command     => 'apt-get -y update',
-    refreshonly => true,  
+    refreshonly => true,
   }
 
 }
