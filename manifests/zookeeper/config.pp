@@ -10,7 +10,7 @@ class confluent::zookeeper::config {
       ensure  => file,
       content => $::confluent::zookeeper_myid,
       mode    => '0644',
-      notify  => Service['zookeeper'],
+#      notify  => Service['zookeeper'],
       require => Package["confluent-kafka-${::confluent::scala_version}"],
     }
   }
@@ -18,7 +18,7 @@ class confluent::zookeeper::config {
   ::confluent::propertyfile { '/etc/kafka/zookeeper.properties':
     propertyhash =>$::confluent::zookeeper_properties,
     component    => 'zookeeper',
-    notify       => Service['zookeeper'],
+#    notify       => Service['zookeeper'],
     require => Package["confluent-kafka-${::confluent::scala_version}"],
   }
 

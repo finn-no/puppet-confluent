@@ -3,7 +3,7 @@ class confluent::kafka_server::config (
 ) {
 
   Confluent::Propertyfile {
-    notify => Service['kafka-server'],
+#    notify => Service['kafka-server'],
   }
 
   confluent::propertyfile { '/etc/kafka/server.properties':
