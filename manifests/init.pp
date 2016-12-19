@@ -60,8 +60,33 @@ class confluent (
       require => Exec['repo update'],
     }
 
-    if $kafka_server { include ::confluent::kafka_server }
-    if $zookeeper { include ::confluent::zookeeper }
+    if $kafka_server {
+      include ::confluent::kafka_server
+
+      if $schema_registry {
+        exec { sleep_before_registry:
+          path        => '/usr/local/bin:/usr/bin:/bin',
+          command     => "sleep 10",
+          subscribe   => Service['kafka-server'],
+          refreshonly => true,
+          before      => Service['kafka-schema_registry'],
+        }
+      }
+    }
+
+    if $zookeeper {
+      include ::confluent::zookeeper
+
+      if $kafka_server {
+        exec { sleep_before_kafka:
+          path        => '/usr/local/bin:/usr/bin:/bin',
+          command     => "sleep 10",
+          subscribe   => Service['zookeeper'],
+          refreshonly => true,
+          before      => Service['kafka-server'],
+        }
+      }
+    }
 
   }
 
