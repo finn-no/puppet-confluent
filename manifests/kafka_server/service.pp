@@ -19,7 +19,7 @@ class confluent::kafka_server::service (
     ensure   => running,
     enable   => true,
     require  => File['/etc/init.d/kafka-server'],
-    provider => 'init',
+    provider => 'debian',
   }
 
 }

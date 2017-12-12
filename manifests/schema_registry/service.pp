@@ -16,7 +16,7 @@ class confluent::schema_registry::service (
     ensure  => running,
     enable  => true,
     require => File['/etc/init.d/kafka-schema_registry'],
-    provider => 'init',
+    provider => 'debian',
   }
 
 }
