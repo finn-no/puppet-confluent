@@ -4,22 +4,19 @@
 $setupdebian = <<EOF
 apt-get update
 apt-get install --yes puppet git vim
-sudo gpg --keyserver pgp.mit.edu --recv-keys 670540C841468433 &> /dev/null
+sudo gpg --keyserver pgp.mit.edu --recv-keys 670540C841468433 #&> /dev/null
 locale-gen nb_NO.UTF-8
 EOF
 
 $setupcentos = <<EOF
 yum -y install puppet git vim
-EOF
-
-$setupwheezy = <<EOF
-wget -q http://apt.puppetlabs.com/puppetlabs-release-wheezy.deb
-dpkg -i puppetlabs-release-wheezy.deb
+hostname localhost
 EOF
 
 $setupjessie = <<EOF
 wget -q http://apt.puppetlabs.com/puppetlabs-release-jessie.deb
 dpkg -i puppetlabs-release-jessie.deb
+apt-get install libssl1.0.0 -y
 EOF
 
 $setuptrusty = <<EOF
@@ -27,8 +24,9 @@ wget -q http://apt.puppetlabs.com/puppetlabs-release-trusty.deb
 dpkg -i puppetlabs-release-trusty.deb
 EOF
 
-$setupcentos6 = <<EOF
-rpm -Uvh http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
+$setupxenial = <<EOF
+rm /var/lib/dpkg/lock
+apt-get update
 EOF
 
 $setupcentos7 = <<EOF
@@ -39,10 +37,23 @@ $puppet = <<EOF
 git clone https://github.com/puppetlabs/puppetlabs-apt.git /puppet/apt
 git clone https://github.com/puppetlabs/puppetlabs-stdlib.git /puppet/stdlib
 git clone https://github.com/puppetlabs/puppetlabs-inifile.git /puppet/inifile
+git clone https://github.com/camptocamp/puppet-systemd.git /puppet/systemd
+if [ $(facter puppetversion | awk -F \. '{print $1}') == "3" ]
+then
+  cd /puppet/apt ; git checkout tags/2.4.0; cd -
+  cd /puppet/systemd ; git checkout tags/0.4.0; cd -
+fi
 puppet apply --modulepath=/puppet /puppet/confluent/tests/standalone.pp 
 EOF
 
 Vagrant.configure(2) do |config|
+
+  config.vm.define "stretch" do |stretch|
+    stretch.vm.box = "debian/stretch64"
+    stretch.vm.synced_folder ".", "/puppet/confluent", type: "rsync", rsync__exclude: "spec/fixtures"
+    stretch.vm.provision "shell", inline: $setupdebian
+    stretch.vm.provision "shell", inline: $puppet
+  end
 
   config.vm.define "jessie" do |jessie| 
     jessie.vm.box = "debian/jessie64"
@@ -50,14 +61,6 @@ Vagrant.configure(2) do |config|
     jessie.vm.provision "shell", inline: $setupjessie
     jessie.vm.provision "shell", inline: $setupdebian
     jessie.vm.provision "shell", inline: $puppet
-  end
-
-  config.vm.define "wheezy" do |wheezy| 
-    wheezy.vm.box = "debian/wheezy64"
-    wheezy.vm.synced_folder ".", "/puppet/confluent", type: "rsync", rsync__exclude: "spec/fixtures"
-    wheezy.vm.provision "shell", inline: $setupwheezy
-    wheezy.vm.provision "shell", inline: $setupdebian
-    wheezy.vm.provision "shell", inline: $puppet
   end
 
   config.vm.define "trusty" do |trusty| 
@@ -71,16 +74,9 @@ Vagrant.configure(2) do |config|
   config.vm.define "xenial" do |xenial| 
     xenial.vm.box = "gbarbieru/xenial"
     xenial.vm.synced_folder ".", "/puppet/confluent", type: "rsync", rsync__exclude: "spec/fixtures"
+    xenial.vm.provision "shell", inline: $setupxenial
     xenial.vm.provision "shell", inline: $setupdebian
     xenial.vm.provision "shell", inline: $puppet
-  end
-
-  config.vm.define "centos6" do |centos6| 
-    centos6.vm.box = "bento/centos-6.7"
-    centos6.vm.synced_folder ".", "/puppet/confluent", type: "rsync", rsync__exclude: "spec/fixtures"
-    centos6.vm.provision "shell", inline: $setupcentos6
-    centos6.vm.provision "shell", inline: $setupcentos
-    centos6.vm.provision "shell", inline: $puppet
   end
 
   config.vm.define "centos7" do |centos7| 
@@ -91,8 +87,8 @@ Vagrant.configure(2) do |config|
     centos7.vm.provision "shell", inline: $puppet
   end
 
-  config.vm.provider :libvirt do |lv|
-    lv.memory = 1536
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 1536
   end
 
 end

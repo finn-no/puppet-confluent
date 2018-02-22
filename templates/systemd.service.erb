@@ -1,0 +1,14 @@
+[Unit]
+Description=<%= @daemonname %>
+After=network-online.target
+Requires=network-online.target
+<%= @systemd_service_wants %>
+
+[Service]
+Type=forking
+Environment="KAFKA_HEAP_OPTS=<%= @heap_opts %>"
+Environment="KAFKA_OPTS=<%= @kafka_opts %>"
+ExecStart=<%= @daemonpath %>/<%= @daemonname %>-start -daemon <%= @configpath %>/<%= @propertyname %>
+
+[Install]
+WantedBy=multi-user.target

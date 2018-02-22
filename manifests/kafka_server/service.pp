@@ -8,6 +8,8 @@ class confluent::kafka_server::service (
   $heap_opts        = $confluent::kafka_server_heap_opts,
 ) {
 
+  $systemd_service_wants = 'Wants=zookeeper.service'
+
   file { '/etc/init.d/kafka-server':
     ensure  => file,
     mode    => '0755',    
@@ -15,11 +17,16 @@ class confluent::kafka_server::service (
     require => Package[ "confluent-kafka-${::confluent::scala_version}" ],
   }
 
+  systemd::unit_file { 'kafka-server.service':
+    ensure  => file,
+    content => template('confluent/systemd.service.erb'),
+    require => Package[ "confluent-kafka-${::confluent::scala_version}" ],
+  }
+
   service { 'kafka-server':
     ensure   => running,
     enable   => true,
-    require  => File['/etc/init.d/kafka-server'],
-    provider => 'init',
+    require  => [ File['/etc/init.d/kafka-server'], Systemd::Unit_File['kafka-server.service'], Exec['systemctl-daemon-reload'] ]
   }
 
 }

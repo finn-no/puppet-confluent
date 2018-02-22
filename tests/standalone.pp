@@ -1,7 +1,7 @@
 case $osfamily {
   'Debian': {
     case $lsbdistcodename {
-      'xenial':                     { $pname = 'openjdk-8-jdk' }
+      'xenial', 'stretch':          { $pname = 'openjdk-8-jdk' }
       'trusty', 'jessie', 'wheezy': { $pname = 'openjdk-7-jdk' }
     }
   }

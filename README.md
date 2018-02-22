@@ -4,11 +4,10 @@
 
 Tested on:
 
-* Debian Wheezy
 * Debian Jessie
+* Debian Stretch
 * Ubuntu 14.04 LTS
 * Ubuntu 16.04 LTS
-* CentOS 6
 * CentOS 7
 
 ## Description

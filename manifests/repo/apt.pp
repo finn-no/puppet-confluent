@@ -2,13 +2,13 @@ class confluent::repo::apt {
 
   apt::key { 'confluent':
     id      => '1A77041E0314E6C5A486524E670540C841468433',
-    #server => 'pgp.mit.edu',
+    server => 'pgp.mit.edu',
     content  => template('confluent/repo/archive.key.erb'),
   } ->
 
   file { '/etc/apt/sources.list.d/confluent.list':
     ensure  => file,
-    content => "deb [arch=amd64] http://packages.confluent.io/deb/3.2 stable main",
+    content => "deb [arch=amd64] http://packages.confluent.io/deb/4.0 stable main",
     mode    => '0644',
     notify  => Exec['repo update'],
   }

@@ -20,17 +20,19 @@ export KAFKA_OPTS="<%= @kafka_opts %>"
 
 PATH=$PATH:$DAEMON_PATH
 
+. /lib/lsb/init-functions
+
 # See how we were called.
 case "$1" in
   start)
     # Start daemon.
-    echo "Starting $DAEMON_NAME";
+    log_daemon_msg "Starting $DAEMON_NAME";
     $DAEMON_PATH/$DAEMON_NAME-start -daemon $CONFIG_PATH/$PROPERTY_NAME
     exit $?
     ;;
   stop)
     # Stop daemons.
-    echo "Shutting down $DAEMON_NAME";
+    log_daemon_msg "Shutting down $DAEMON_NAME";
     $DAEMON_PATH/$DAEMON_NAME-stop
     exit $?
   ;;
@@ -43,10 +45,10 @@ case "$1" in
   status)
     pid=$(ps ax | grep java | grep -i "$PID_PATTERN" | awk '{print $1}')
     if [ -n "$pid" ]; then
-      echo "$DAEMON_NAME is running as PID: $pid"
+      log_failure_msg "$DAEMON_NAME is running as PID: $pid"
       exit 0
     else
-      echo "$DAEMON_NAME is not running"
+      log_success_msg "$DAEMON_NAME is not running"
       exit 1
     fi
   ;;
