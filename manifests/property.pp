@@ -2,7 +2,7 @@ define confluent::property (
   $propertyfile,
   $component,
   $settingshash,
-  $section = "",
+  $section = '',
 ) {
 
   ini_setting { "${component}_${name}":

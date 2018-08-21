@@ -1,6 +1,6 @@
 class confluent (
   #Major version selection, refer to confluent.io docs:
-  $version                              = '4.0.0',
+  $version                              = '5.0.0',
   $scala_version                        = '2.11',
 
   #components to include
@@ -24,15 +24,12 @@ class confluent (
   $producer_properties                  = {},
   $consumer_properties                  = {},
   $tools_log4j_properties               = {},
-  
   $zookeeper_properties                 = {},
   $zookeeper_myid                       = undef,
   $zookeeper_opts                       = '',
   $zookeeper_heap_opts                  = '',
-  
   $kafka_rest_properties                = {},
   $kafka_rest_log4j_properties          = {},
-  
   $schema_registry_properties           = {},
   $connect_avro_distributed_properties  = {},
   $connect_avro_standalone_properties   = {},

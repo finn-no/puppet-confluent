@@ -4,7 +4,7 @@ class confluent::zookeeper::config {
 
     file { "$::confluent::zookeeper_datadir":
       ensure => directory,
-    }      
+    }
 
     file { "${::confluent::zookeeper_datadir}/myid":
       ensure  => file,
@@ -19,7 +19,7 @@ class confluent::zookeeper::config {
     propertyhash =>$::confluent::zookeeper_properties,
     component    => 'zookeeper',
 #    notify       => Service['zookeeper'],
-    require => Package["confluent-kafka-${::confluent::scala_version}"],
+    require          => Package["confluent-kafka-${::confluent::scala_version}"],
   }
 
 }

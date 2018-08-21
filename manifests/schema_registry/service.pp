@@ -4,7 +4,7 @@ class confluent::schema_registry::service (
   $daemonname = 'schema-registry',
   $propertyname = 'schema-registry.properties',
   $pidpattern = '[s]chema-registry',
- ) {
+ )  {
 
   $systemd_service_wants = 'Wants=zookeeper.service'
 

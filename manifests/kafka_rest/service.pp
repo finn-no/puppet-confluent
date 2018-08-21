@@ -22,7 +22,7 @@ class confluent::kafka_rest::service (
   service { 'kafka-rest':
     ensure  => running,
     enable  => true,
-    require  => [ File['/etc/init.d/kafka-rest'], Systemd::Unit_File['kafka-rest.service'], Exec['systemctl-daemon-reload'] ]
+    require => [ File['/etc/init.d/kafka-rest'], Systemd::Unit_File['kafka-rest.service'], Exec['systemctl-daemon-reload'] ]
   }
 
 }

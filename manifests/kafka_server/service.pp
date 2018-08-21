@@ -12,7 +12,7 @@ class confluent::kafka_server::service (
 
   file { '/etc/init.d/kafka-server':
     ensure  => file,
-    mode    => '0755',    
+    mode    => '0755',
     content => template('confluent/init.erb'),
     require => Package[ "confluent-kafka-${::confluent::scala_version}" ],
   }
@@ -24,9 +24,9 @@ class confluent::kafka_server::service (
   }
 
   service { 'kafka-server':
-    ensure   => running,
-    enable   => true,
-    require  => [ File['/etc/init.d/kafka-server'], Systemd::Unit_File['kafka-server.service'], Exec['systemctl-daemon-reload'] ]
+    ensure  => running,
+    enable  => true,
+    require => [ File['/etc/init.d/kafka-server'], Systemd::Unit_File['kafka-server.service'], Exec['systemctl-daemon-reload'] ]
   }
 
 }

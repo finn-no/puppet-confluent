@@ -8,7 +8,7 @@ class confluent::repo::apt {
 
   file { '/etc/apt/sources.list.d/confluent.list':
     ensure  => file,
-    content => "deb [arch=amd64] http://packages.confluent.io/deb/4.0 stable main",
+    content => 'deb [arch=amd64] http://packages.confluent.io/deb/5.0 stable main',
     mode    => '0644',
     notify  => Exec['repo update'],
   }
@@ -16,7 +16,7 @@ class confluent::repo::apt {
   exec { 'repo update':
     path        => '/usr/sbin:/usr/bin:/sbin:/bin',
     command     => 'apt-get -y update',
-    refreshonly => true,  
+    refreshonly => true,
   }
 
 }
