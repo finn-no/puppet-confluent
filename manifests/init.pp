@@ -1,7 +1,7 @@
 class confluent (
   #Major version selection, refer to confluent.io docs:
-  $version                              = '5.0.0',
-  $scala_version                        = '2.11',
+  $version                              = '5.1.2',
+  $scala_version                        = '2.12',
 
   #components to include
   $kafka_server                         = false,

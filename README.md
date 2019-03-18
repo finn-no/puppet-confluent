@@ -27,7 +27,7 @@ You must classify your nodes with puppet, and java must be provided. See below f
 Set up a standalone server like this:
 
 ````
-package { 'openjdk-7-jre':
+package { 'openjdk-8-jre':
   ensure => present,
 } ->
 
@@ -42,7 +42,7 @@ class { 'confluent':
 This is the simplest form you will be able to use. For multiple servers, include only the components you wish the node to run:
 
 ````
-package { 'openjdk-7-jre':
+package { 'openjdk-8-jre':
   ensure => present,
 } ->
 
