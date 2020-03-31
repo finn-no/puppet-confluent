@@ -1,6 +1,6 @@
 class confluent (
   #Major version selection, refer to confluent.io docs:
-  $version                              = '5.2.1',
+  $version                              = '5.3.3',
   $scala_version                        = '2.12',
 
   #components to include
