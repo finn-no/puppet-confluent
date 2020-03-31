@@ -8,7 +8,7 @@ class confluent::repo::apt {
 
   file { '/etc/apt/sources.list.d/confluent.list':
     ensure  => file,
-    content => 'deb [arch=amd64] http://packages.confluent.io/deb/5.3 stable main',
+    content => 'deb [arch=amd64] http://packages.confluent.io/deb/5.4 stable main',
     mode    => '0644',
     notify  => Exec['repo update'],
   }
