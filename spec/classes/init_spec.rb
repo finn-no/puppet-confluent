@@ -23,7 +23,7 @@ describe 'confluent' do
 
     it { should contain_class('confluent') }
     it { should contain_class('confluent::kafka_server') }
-    it { should contain_package('confluent-kafka-2.12') }
+    it { should contain_package('confluent-kafka') }
 
   end
 

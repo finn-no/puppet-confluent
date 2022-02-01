@@ -1,7 +1,6 @@
 class confluent (
   #Major version selection, refer to confluent.io docs:
   $version                              = '7.0.1',
-  $scala_version                        = '2.12',
 
   #components to include
   $kafka_server                         = false,
@@ -50,7 +49,7 @@ class confluent (
 
   if ($kafka_server or $zookeeper) {
 
-    $packages = [ "confluent-kafka-${::confluent::scala_version}" ]
+    $packages = [ "confluent-kafka" ]
 
     package { $packages:
       ensure  => installed,

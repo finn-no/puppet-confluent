@@ -12,13 +12,13 @@ class confluent::zookeeper::service (
     ensure  => file,
     mode    => '0755',
     content => template('confluent/init.erb'),
-    require => Package[ "confluent-kafka-${::confluent::scala_version}" ],
+    require => Package[ "confluent-kafka" ],
   }
 
   systemd::unit_file { 'zookeeper.service':
     ensure  => file,
     content => template('confluent/systemd.service.erb'),
-    require => Package[ "confluent-kafka-${::confluent::scala_version}" ],
+    require => Package[ "confluent-kafka" ],
   }
 
   service { 'zookeeper':
